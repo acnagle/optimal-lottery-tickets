@@ -1,0 +1,45 @@
+Namespace(batch_size=64, bias=None, data='../data', device=1, epochs=3, hidden_size=500, load_weights=None, log_interval=100, lr=0.1, model='redfc4', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.25, use_relu=False, wd=0.0005) 
+
+Pruning a Four-Layer Fully Connected Redundant Network ...
+Train Epoch: 1 [6336/60000 (11%)]	Loss: 0.947687
+Train Epoch: 1 [12736/60000 (21%)]	Loss: 0.479536
+Train Epoch: 1 [19136/60000 (32%)]	Loss: 0.393960
+Train Epoch: 1 [25536/60000 (43%)]	Loss: 0.431756
+Train Epoch: 1 [31936/60000 (53%)]	Loss: 0.251921
+Train Epoch: 1 [38336/60000 (64%)]	Loss: 0.333686
+Train Epoch: 1 [44736/60000 (75%)]	Loss: 0.134160
+Train Epoch: 1 [51136/60000 (85%)]	Loss: 0.586530
+Train Epoch: 1 [57536/60000 (96%)]	Loss: 0.438262
+
+Test set: Average loss: 0.2589, Accuracy: 9247/10000 (92%)
+
+Train Epoch: 2 [6336/60000 (11%)]	Loss: 0.410885
+Train Epoch: 2 [12736/60000 (21%)]	Loss: 0.062000
+Train Epoch: 2 [19136/60000 (32%)]	Loss: 0.340873
+Train Epoch: 2 [25536/60000 (43%)]	Loss: 0.180418
+Train Epoch: 2 [31936/60000 (53%)]	Loss: 0.162781
+Train Epoch: 2 [38336/60000 (64%)]	Loss: 0.385111
+Train Epoch: 2 [44736/60000 (75%)]	Loss: 0.200829
+Train Epoch: 2 [51136/60000 (85%)]	Loss: 0.359328
+Train Epoch: 2 [57536/60000 (96%)]	Loss: 0.215161
+
+Test set: Average loss: 0.2517, Accuracy: 9273/10000 (93%)
+
+Train Epoch: 3 [6336/60000 (11%)]	Loss: 0.173283
+Train Epoch: 3 [12736/60000 (21%)]	Loss: 0.191402
+Train Epoch: 3 [19136/60000 (32%)]	Loss: 0.004455
+Train Epoch: 3 [25536/60000 (43%)]	Loss: 0.096945
+Train Epoch: 3 [31936/60000 (53%)]	Loss: 0.049319
+Train Epoch: 3 [38336/60000 (64%)]	Loss: 0.158149
+Train Epoch: 3 [44736/60000 (75%)]	Loss: 0.135852
+Train Epoch: 3 [51136/60000 (85%)]	Loss: 0.075909
+Train Epoch: 3 [57536/60000 (96%)]	Loss: 0.048368
+
+Test set: Average loss: 0.1338, Accuracy: 9605/10000 (96%)
+
+Namespace(batch_size=64, bias=None, data='../data', device=1, epochs=3, hidden_size=500, load_weights=None, log_interval=100, lr=0.1, model='redfc4', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.25, use_relu=False, wd=0.0005)
+
+
+Total time spent pruning/training: 0.66 minutes
+Total number of parameters in model: 4496420
+Number of parameters in pruned model: 3372315

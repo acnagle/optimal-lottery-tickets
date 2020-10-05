@@ -1,0 +1,54 @@
+Namespace(M=-1, batch_size=64, c=3.0, check_w_lt_eps=False, device=None, epochs=10, epsilon=0.01, hidden_size=500, log_interval=100, lr=0.001, model='fc2', model_name='fc-mnist', momentum=0.9, no_cuda=False, save_model=False, seed=1, target_net='../redundant-networks/base/fc2/fc2_e10_h500.pt', wd=0.0005) 
+
+Accuracy of target network on the 10000 test images: 97.19 %
+
+The target network's weights are bounded from [-0.46423155069351196, 0.5407021641731262]. The a_i coefficients will be drawn uniformly from this range.
+
+Approximating layer fc1.weight ...
+Using license file /home/ubuntu/gurobi.lic
+Academic license - for non-commercial use only
+Approximating layer fc2.weight ...
+
+Original weights:
+OrderedDict([('fc1.weight', tensor([[ 0.0031,  0.0005,  0.0012,  ...,  0.0022,  0.0014,  0.0019],
+        [-0.0011, -0.0007, -0.0014,  ...,  0.0007,  0.0010, -0.0003],
+        [ 0.0024, -0.0005, -0.0023,  ..., -0.0008,  0.0007, -0.0023],
+        ...,
+        [ 0.0029, -0.0009, -0.0019,  ...,  0.0015, -0.0016,  0.0019],
+        [ 0.0043,  0.0014,  0.0009,  ...,  0.0017,  0.0004,  0.0049],
+        [ 0.0032, -0.0013, -0.0005,  ...,  0.0038,  0.0018,  0.0029]])), ('fc2.weight', tensor([[ 0.1028,  0.0007, -0.0240,  ...,  0.0028,  0.1945,  0.0074],
+        [-0.0116,  0.0055,  0.0193,  ..., -0.0011, -0.0460,  0.0027],
+        [-0.0044,  0.0025,  0.1016,  ...,  0.0044, -0.0462, -0.0007],
+        ...,
+        [-0.0146, -0.0062, -0.0180,  ..., -0.0079, -0.0411,  0.0039],
+        [-0.0284, -0.0004, -0.0213,  ...,  0.0021,  0.0660, -0.0069],
+        [ 0.0243, -0.0039,  0.0325,  ..., -0.0010, -0.0579, -0.0034]]))])
+
+Approximated weights:
+OrderedDict([('fc1.weight', tensor([[ 0.0031,  0.0005,  0.0012,  ...,  0.0022,  0.0014,  0.0019],
+        [-0.0011, -0.0008, -0.0014,  ...,  0.0007,  0.0010, -0.0003],
+        [ 0.0024, -0.0005, -0.0023,  ..., -0.0008,  0.0007, -0.0023],
+        ...,
+        [ 0.0029, -0.0009, -0.0019,  ...,  0.0015, -0.0016,  0.0019],
+        [ 0.0043,  0.0014,  0.0009,  ...,  0.0017,  0.0004,  0.0049],
+        [ 0.0032, -0.0013, -0.0005,  ...,  0.0038,  0.0018,  0.0029]])), ('fc2.weight', tensor([[ 0.1028,  0.0007, -0.0240,  ...,  0.0028,  0.1945,  0.0074],
+        [-0.0116,  0.0055,  0.0193,  ..., -0.0011, -0.0460,  0.0027],
+        [-0.0044,  0.0025,  0.1016,  ...,  0.0044, -0.0462, -0.0007],
+        ...,
+        [-0.0146, -0.0062, -0.0180,  ..., -0.0079, -0.0411,  0.0039],
+        [-0.0284, -0.0004, -0.0213,  ...,  0.0021,  0.0660, -0.0069],
+        [ 0.0243, -0.0039,  0.0325,  ..., -0.0010, -0.0579, -0.0034]]))])
+
+
+
+Time to obtain approximated network using subset sum: 77266.02 seconds
+
+All weights fall within eps=0.01 error: True
+Accuracy of target network on the 10000 test images: 97.19 %
+Accuracy of approximated network on the 10000 test images: 97.19 %
+
+Total number of weights in target network: 397000
+Total number of weights in approximated network: 8337000
+Number of weights remaining in approximated network: 3725871
+
+The approximated network started with 21.00 times as many weights as the target network, and ended with 9.39 times as many weights

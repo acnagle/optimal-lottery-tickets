@@ -1,0 +1,45 @@
+Namespace(batch_size=64, bias=None, data='../data', device=0, epochs=3, hidden_size=500, load_weights='./paper/lenet5/lenet5_e50_h500.pt', log_interval=100, lr=0.01, model='redlenet5', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.75, use_relu=False, wd=0.0005) 
+
+Training a RedLeNet5 network ...
+Train Epoch: 1 [6336/60000 (11%)]	Loss: 1.936540
+Train Epoch: 1 [12736/60000 (21%)]	Loss: 1.777198
+Train Epoch: 1 [19136/60000 (32%)]	Loss: 1.321549
+Train Epoch: 1 [25536/60000 (43%)]	Loss: 1.108186
+Train Epoch: 1 [31936/60000 (53%)]	Loss: 1.060496
+Train Epoch: 1 [38336/60000 (64%)]	Loss: 0.942801
+Train Epoch: 1 [44736/60000 (75%)]	Loss: 0.897477
+Train Epoch: 1 [51136/60000 (85%)]	Loss: 0.758695
+Train Epoch: 1 [57536/60000 (96%)]	Loss: 0.794110
+
+Test set: Average loss: 0.7087, Accuracy: 8011/10000 (80%)
+
+Train Epoch: 2 [6336/60000 (11%)]	Loss: 0.621259
+Train Epoch: 2 [12736/60000 (21%)]	Loss: 0.510303
+Train Epoch: 2 [19136/60000 (32%)]	Loss: 0.550694
+Train Epoch: 2 [25536/60000 (43%)]	Loss: 0.616240
+Train Epoch: 2 [31936/60000 (53%)]	Loss: 0.743826
+Train Epoch: 2 [38336/60000 (64%)]	Loss: 0.715173
+Train Epoch: 2 [44736/60000 (75%)]	Loss: 0.317047
+Train Epoch: 2 [51136/60000 (85%)]	Loss: 0.431073
+Train Epoch: 2 [57536/60000 (96%)]	Loss: 0.497787
+
+Test set: Average loss: 0.4626, Accuracy: 8711/10000 (87%)
+
+Train Epoch: 3 [6336/60000 (11%)]	Loss: 0.499708
+Train Epoch: 3 [12736/60000 (21%)]	Loss: 0.410939
+Train Epoch: 3 [19136/60000 (32%)]	Loss: 0.397061
+Train Epoch: 3 [25536/60000 (43%)]	Loss: 0.344764
+Train Epoch: 3 [31936/60000 (53%)]	Loss: 0.552464
+Train Epoch: 3 [38336/60000 (64%)]	Loss: 0.465976
+Train Epoch: 3 [44736/60000 (75%)]	Loss: 0.320530
+Train Epoch: 3 [51136/60000 (85%)]	Loss: 0.438979
+Train Epoch: 3 [57536/60000 (96%)]	Loss: 0.487673
+
+Test set: Average loss: 0.4451, Accuracy: 8674/10000 (87%)
+
+Namespace(batch_size=64, bias=None, data='../data', device=0, epochs=3, hidden_size=500, load_weights='./paper/lenet5/lenet5_e50_h500.pt', log_interval=100, lr=0.01, model='redlenet5', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.75, use_relu=False, wd=0.0005)
+
+
+Total time spent pruning/training: 0.37 minutes
+Total number of parameters in model: 300170
+Number of parameters in pruned model: 76955

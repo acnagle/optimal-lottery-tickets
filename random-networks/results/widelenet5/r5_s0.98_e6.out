@@ -1,0 +1,81 @@
+Namespace(batch_size=64, bias=None, data='../data', device=0, epochs=6, hidden_size=500, load_weights='./paper/lenet5/lenet5_e50_h500.pt', log_interval=100, lr=0.01, model='widelenet5', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.98, use_relu=False, wd=0.0005) 
+
+Pruning a Wide LeNet5 network ...
+Train Epoch: 1 [6336/60000 (11%)]	Loss: 2.302230
+Train Epoch: 1 [12736/60000 (21%)]	Loss: 2.302355
+Train Epoch: 1 [19136/60000 (32%)]	Loss: 2.301976
+Train Epoch: 1 [25536/60000 (43%)]	Loss: 2.300707
+Train Epoch: 1 [31936/60000 (53%)]	Loss: 2.300787
+Train Epoch: 1 [38336/60000 (64%)]	Loss: 2.301117
+Train Epoch: 1 [44736/60000 (75%)]	Loss: 2.299415
+Train Epoch: 1 [51136/60000 (85%)]	Loss: 2.297118
+Train Epoch: 1 [57536/60000 (96%)]	Loss: 2.296203
+
+Test set: Average loss: 2.2982, Accuracy: 1971/10000 (20%)
+
+Train Epoch: 2 [6336/60000 (11%)]	Loss: 2.297534
+Train Epoch: 2 [12736/60000 (21%)]	Loss: 2.293850
+Train Epoch: 2 [19136/60000 (32%)]	Loss: 2.296405
+Train Epoch: 2 [25536/60000 (43%)]	Loss: 2.293497
+Train Epoch: 2 [31936/60000 (53%)]	Loss: 2.295773
+Train Epoch: 2 [38336/60000 (64%)]	Loss: 2.285157
+Train Epoch: 2 [44736/60000 (75%)]	Loss: 2.289811
+Train Epoch: 2 [51136/60000 (85%)]	Loss: 2.281808
+Train Epoch: 2 [57536/60000 (96%)]	Loss: 2.276664
+
+Test set: Average loss: 2.2855, Accuracy: 1978/10000 (20%)
+
+Train Epoch: 3 [6336/60000 (11%)]	Loss: 2.277754
+Train Epoch: 3 [12736/60000 (21%)]	Loss: 2.274743
+Train Epoch: 3 [19136/60000 (32%)]	Loss: 2.277027
+Train Epoch: 3 [25536/60000 (43%)]	Loss: 2.281601
+Train Epoch: 3 [31936/60000 (53%)]	Loss: 2.264362
+Train Epoch: 3 [38336/60000 (64%)]	Loss: 2.277854
+Train Epoch: 3 [44736/60000 (75%)]	Loss: 2.271739
+Train Epoch: 3 [51136/60000 (85%)]	Loss: 2.263873
+Train Epoch: 3 [57536/60000 (96%)]	Loss: 2.252141
+
+Test set: Average loss: 2.2499, Accuracy: 2192/10000 (22%)
+
+Train Epoch: 4 [6336/60000 (11%)]	Loss: 2.231497
+Train Epoch: 4 [12736/60000 (21%)]	Loss: 2.209271
+Train Epoch: 4 [19136/60000 (32%)]	Loss: 2.250107
+Train Epoch: 4 [25536/60000 (43%)]	Loss: 2.215438
+Train Epoch: 4 [31936/60000 (53%)]	Loss: 2.236371
+Train Epoch: 4 [38336/60000 (64%)]	Loss: 2.237495
+Train Epoch: 4 [44736/60000 (75%)]	Loss: 2.235976
+Train Epoch: 4 [51136/60000 (85%)]	Loss: 2.209137
+Train Epoch: 4 [57536/60000 (96%)]	Loss: 2.175626
+
+Test set: Average loss: 2.2105, Accuracy: 2235/10000 (22%)
+
+Train Epoch: 5 [6336/60000 (11%)]	Loss: 2.191135
+Train Epoch: 5 [12736/60000 (21%)]	Loss: 2.225415
+Train Epoch: 5 [19136/60000 (32%)]	Loss: 2.230702
+Train Epoch: 5 [25536/60000 (43%)]	Loss: 2.168671
+Train Epoch: 5 [31936/60000 (53%)]	Loss: 2.201843
+Train Epoch: 5 [38336/60000 (64%)]	Loss: 2.246853
+Train Epoch: 5 [44736/60000 (75%)]	Loss: 2.224724
+Train Epoch: 5 [51136/60000 (85%)]	Loss: 2.208540
+Train Epoch: 5 [57536/60000 (96%)]	Loss: 2.249779
+
+Test set: Average loss: 2.1848, Accuracy: 2228/10000 (22%)
+
+Train Epoch: 6 [6336/60000 (11%)]	Loss: 2.174392
+Train Epoch: 6 [12736/60000 (21%)]	Loss: 2.207860
+Train Epoch: 6 [19136/60000 (32%)]	Loss: 2.183322
+Train Epoch: 6 [25536/60000 (43%)]	Loss: 2.187260
+Train Epoch: 6 [31936/60000 (53%)]	Loss: 2.172793
+Train Epoch: 6 [38336/60000 (64%)]	Loss: 2.204906
+Train Epoch: 6 [44736/60000 (75%)]	Loss: 2.210438
+Train Epoch: 6 [51136/60000 (85%)]	Loss: 2.138100
+Train Epoch: 6 [57536/60000 (96%)]	Loss: 2.172191
+
+Test set: Average loss: 2.1781, Accuracy: 2296/10000 (23%)
+
+Namespace(batch_size=64, bias=None, data='../data', device=0, epochs=6, hidden_size=500, load_weights='./paper/lenet5/lenet5_e50_h500.pt', log_interval=100, lr=0.01, model='widelenet5', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.98, use_relu=False, wd=0.0005)
+
+
+Total time spent pruning/training: 0.64 minutes
+Total number of parameters in model: 300414
+Number of parameters in pruned model: 8508
