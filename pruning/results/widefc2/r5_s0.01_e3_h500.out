@@ -1,0 +1,45 @@
+Namespace(batch_size=64, bias=None, data='../data', device=1, epochs=3, hidden_size=500, load_weights=None, log_interval=100, lr=0.1, model='widefc2', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.01, use_relu=False, wd=0.0005) 
+
+Pruning a Wide Two-Layer Fully Connected network ...
+Train Epoch: 1 [6336/60000 (11%)]	Loss: 0.794131
+Train Epoch: 1 [12736/60000 (21%)]	Loss: 1.097545
+Train Epoch: 1 [19136/60000 (32%)]	Loss: 1.174879
+Train Epoch: 1 [25536/60000 (43%)]	Loss: 1.264423
+Train Epoch: 1 [31936/60000 (53%)]	Loss: 1.279152
+Train Epoch: 1 [38336/60000 (64%)]	Loss: 1.400858
+Train Epoch: 1 [44736/60000 (75%)]	Loss: 1.501635
+Train Epoch: 1 [51136/60000 (85%)]	Loss: 1.769526
+Train Epoch: 1 [57536/60000 (96%)]	Loss: 1.732135
+
+Test set: Average loss: 1.6869, Accuracy: 4362/10000 (44%)
+
+Train Epoch: 2 [6336/60000 (11%)]	Loss: 1.669716
+Train Epoch: 2 [12736/60000 (21%)]	Loss: 1.813927
+Train Epoch: 2 [19136/60000 (32%)]	Loss: 1.683628
+Train Epoch: 2 [25536/60000 (43%)]	Loss: 1.959347
+Train Epoch: 2 [31936/60000 (53%)]	Loss: 1.848149
+Train Epoch: 2 [38336/60000 (64%)]	Loss: 1.826484
+Train Epoch: 2 [44736/60000 (75%)]	Loss: 1.843973
+Train Epoch: 2 [51136/60000 (85%)]	Loss: 2.150861
+Train Epoch: 2 [57536/60000 (96%)]	Loss: 1.860809
+
+Test set: Average loss: 1.9872, Accuracy: 3373/10000 (34%)
+
+Train Epoch: 3 [6336/60000 (11%)]	Loss: 1.958276
+Train Epoch: 3 [12736/60000 (21%)]	Loss: 2.163589
+Train Epoch: 3 [19136/60000 (32%)]	Loss: 1.835091
+Train Epoch: 3 [25536/60000 (43%)]	Loss: 2.062363
+Train Epoch: 3 [31936/60000 (53%)]	Loss: 2.000324
+Train Epoch: 3 [38336/60000 (64%)]	Loss: 1.878686
+Train Epoch: 3 [44736/60000 (75%)]	Loss: 1.904628
+Train Epoch: 3 [51136/60000 (85%)]	Loss: 2.028287
+Train Epoch: 3 [57536/60000 (96%)]	Loss: 2.042060
+
+Test set: Average loss: 2.0305, Accuracy: 3133/10000 (31%)
+
+Namespace(batch_size=64, bias=None, data='../data', device=1, epochs=3, hidden_size=500, load_weights=None, log_interval=100, lr=0.1, model='widefc2', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.01, use_relu=False, wd=0.0005)
+
+
+Total time spent pruning/training: 0.31 minutes
+Total number of parameters in model: 1991352
+Number of parameters in pruned model: 1971438

@@ -1,0 +1,57 @@
+Namespace(batch_size=64, bias=None, data='../data', device=1, epochs=4, hidden_size=500, load_weights=None, log_interval=100, lr=0.1, model='widefc2', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.98, use_relu=False, wd=0.0005) 
+
+Pruning a Wide Two-Layer Fully Connected network ...
+Train Epoch: 1 [6336/60000 (11%)]	Loss: 0.976493
+Train Epoch: 1 [12736/60000 (21%)]	Loss: 0.779079
+Train Epoch: 1 [19136/60000 (32%)]	Loss: 0.632973
+Train Epoch: 1 [25536/60000 (43%)]	Loss: 0.596070
+Train Epoch: 1 [31936/60000 (53%)]	Loss: 0.507519
+Train Epoch: 1 [38336/60000 (64%)]	Loss: 0.468656
+Train Epoch: 1 [44736/60000 (75%)]	Loss: 0.522956
+Train Epoch: 1 [51136/60000 (85%)]	Loss: 0.524211
+Train Epoch: 1 [57536/60000 (96%)]	Loss: 0.491059
+
+Test set: Average loss: 0.4384, Accuracy: 8946/10000 (89%)
+
+Train Epoch: 2 [6336/60000 (11%)]	Loss: 0.474380
+Train Epoch: 2 [12736/60000 (21%)]	Loss: 0.369101
+Train Epoch: 2 [19136/60000 (32%)]	Loss: 0.448428
+Train Epoch: 2 [25536/60000 (43%)]	Loss: 0.501050
+Train Epoch: 2 [31936/60000 (53%)]	Loss: 0.487353
+Train Epoch: 2 [38336/60000 (64%)]	Loss: 0.316913
+Train Epoch: 2 [44736/60000 (75%)]	Loss: 0.377678
+Train Epoch: 2 [51136/60000 (85%)]	Loss: 0.330203
+Train Epoch: 2 [57536/60000 (96%)]	Loss: 0.419617
+
+Test set: Average loss: 0.3959, Accuracy: 9035/10000 (90%)
+
+Train Epoch: 3 [6336/60000 (11%)]	Loss: 0.318027
+Train Epoch: 3 [12736/60000 (21%)]	Loss: 0.260996
+Train Epoch: 3 [19136/60000 (32%)]	Loss: 0.290344
+Train Epoch: 3 [25536/60000 (43%)]	Loss: 0.394550
+Train Epoch: 3 [31936/60000 (53%)]	Loss: 0.390138
+Train Epoch: 3 [38336/60000 (64%)]	Loss: 0.342609
+Train Epoch: 3 [44736/60000 (75%)]	Loss: 0.410868
+Train Epoch: 3 [51136/60000 (85%)]	Loss: 0.501387
+Train Epoch: 3 [57536/60000 (96%)]	Loss: 0.354061
+
+Test set: Average loss: 0.3854, Accuracy: 9072/10000 (91%)
+
+Train Epoch: 4 [6336/60000 (11%)]	Loss: 0.481398
+Train Epoch: 4 [12736/60000 (21%)]	Loss: 0.455355
+Train Epoch: 4 [19136/60000 (32%)]	Loss: 0.490311
+Train Epoch: 4 [25536/60000 (43%)]	Loss: 0.435343
+Train Epoch: 4 [31936/60000 (53%)]	Loss: 0.425419
+Train Epoch: 4 [38336/60000 (64%)]	Loss: 0.412962
+Train Epoch: 4 [44736/60000 (75%)]	Loss: 0.364152
+Train Epoch: 4 [51136/60000 (85%)]	Loss: 0.369707
+Train Epoch: 4 [57536/60000 (96%)]	Loss: 0.373180
+
+Test set: Average loss: 0.3822, Accuracy: 9072/10000 (91%)
+
+Namespace(batch_size=64, bias=None, data='../data', device=1, epochs=4, hidden_size=500, load_weights=None, log_interval=100, lr=0.1, model='widefc2', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.98, use_relu=False, wd=0.0005)
+
+
+Total time spent pruning/training: 0.42 minutes
+Total number of parameters in model: 1991352
+Number of parameters in pruned model: 39827

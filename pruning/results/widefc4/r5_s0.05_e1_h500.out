@@ -1,0 +1,21 @@
+Namespace(batch_size=64, bias=None, data='../data', device=1, epochs=1, hidden_size=500, load_weights=None, log_interval=100, lr=0.1, model='widefc4', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.05, use_relu=False, wd=0.0005) 
+
+Pruning a Wide Four-Layer Fully Connected network ...
+Train Epoch: 1 [6336/60000 (11%)]	Loss: 0.383277
+Train Epoch: 1 [12736/60000 (21%)]	Loss: 0.147681
+Train Epoch: 1 [19136/60000 (32%)]	Loss: 0.411475
+Train Epoch: 1 [25536/60000 (43%)]	Loss: 0.174934
+Train Epoch: 1 [31936/60000 (53%)]	Loss: 0.252086
+Train Epoch: 1 [38336/60000 (64%)]	Loss: 0.377365
+Train Epoch: 1 [44736/60000 (75%)]	Loss: 0.078369
+Train Epoch: 1 [51136/60000 (85%)]	Loss: 0.150619
+Train Epoch: 1 [57536/60000 (96%)]	Loss: 0.109401
+
+Test set: Average loss: 0.2038, Accuracy: 9383/10000 (94%)
+
+Namespace(batch_size=64, bias=None, data='../data', device=1, epochs=1, hidden_size=500, load_weights=None, log_interval=100, lr=0.1, model='widefc4', momentum=0.9, no_cuda=False, r=5, save_model=None, save_results=True, seed=1, sparsity=0.05, use_relu=False, wd=0.0005)
+
+
+Total time spent pruning/training: 0.18 minutes
+Total number of parameters in model: 4496508
+Number of parameters in pruned model: 4271682
