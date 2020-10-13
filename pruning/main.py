@@ -14,14 +14,16 @@ from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import CosineAnnealingLR
 import torch.autograd as autograd
 
-import redundant_models as rm
-import baseline_models as bm
-import wide_models as wm
-import utils
-from utils import SupermaskLinear
+from utils import data
+import models
+#import redundant_models as rm
+#import baseline_models as bm
+#import wide_models as wm
+#import utils
+#from utils import SupermaskLinear
 
 def main():
-    parser = argparse.ArgumentParser(description='MNIST Pruning using Modified FC Network')
+    parser = argparse.ArgumentParser(description='MNIST Pruning using Modified FC Network')    # TODO: rename this
     parser.add_argument('--batch-size', type=int, default=64, metavar='N',
                     help='input batch size for training (default: 64)')
     parser.add_argument('--epochs', type=int, default=10, metavar='N',
@@ -46,16 +48,16 @@ def main():
                     help='number of nodes in the FC layers of the network. Important: when the model of choice is a wide network, the number of hidden nodes is determined based on this argument and the --r argument. Recalculating the number of hidden nodes allowed us to determine how many hidden nodes the wide networks should have in order to have the same number of parameters as a network with our structure.')
     parser.add_argument('--log-interval', type=int, default=100, metavar='N',
                     help='the number of batches to wait before logging training status')
-    parser.add_argument('--data', type=str, default='../data',
+    parser.add_argument('--data-dir', type=str, default='../data',
                     help='directory of dataset')
-    parser.add_argument('--model', type=str, default='redfc2',
-            help='name of model to train. can be "fc2", "fc4", "redfc2", "redfc4", "widefc2", "widefc4", "lenet5", "redlenet5", "widelenet5" (default: "redfc2")')    # TODO: Add resnet models to list, update this list to use the full names of each model as specified in redundant.py, baseline.py and wide.py. can I print the names from 'all' vector in __init__.py from models directory?
+    parser.add_argument('--arch', type=str, default='RedTwoLayerFC',
+                    help='model architecture: ' + ' | '.join(models.__dict__['__all__']) + ' | (default: RedTwoLayerFC)')
     parser.add_argument('--load-weights', type=str, default=None,
                     help='provide a path to load the weights from; only used if --model is "redlenet5")')
     parser.add_argument('--use-relu', action='store_true', default=False,
                     help='if true, relu activation will be included when adding redundancy')
     parser.add_argument('--sparsity', type=float, default=0.5, metavar='S',
-                    help='the ratio of weights to remove in each layer (default: 0.5)')
+                    help='the ratio of weights to remove in each fully connected layer (default: 0.5)')
     parser.add_argument('--r', type=int, default=5, metavar='R',
                     help='number of units of redundancy (default: 5)')
     parser.add_argument('--bias', action='store_true', default=None,
@@ -71,29 +73,21 @@ def main():
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
 
-    # set training device
-    use_cuda = not args.no_cuda and torch.cuda.is_available()
-    
-    if args.device is not None:
-        device = 'cuda:' + str(args.device)
-    else:
-        device = torch.device('cuda' if use_cuda else 'cpu')
-
-    # get dataset
-    kwargs = {'num_workers': args.num_workers, 'pin_memory': True} if use_cuda else {}
-    
-    # TODO: insert get_dataset method
-    
+    device = get_device(args)
+    data = get_dataset(args)
+    model = get_model(args, data)
+    print(model)
+    sys.exit()
 
     if args.load_weights is not None:
         state_dict = torch.load(args.load_weights)
     else:
         state_dict = None
 
-    if args.model == 'redfc2':
+    if args.arch == 'redfc2':
         print('Pruning a Two-Layer Fully Connected Redundant Network ...')
         model = rm.RedTwoLayerFC(input_size, args.hidden_size, num_classes, args.sparsity, args.r, args.bias, args.use_relu).to(device)
-    elif args.model == 'redfc4':
+    elif args.arch == 'redfc4':
         print('Pruning a Four-Layer Fully Connected Redundant Network ...')
         model = rm.RedFourLayerFC(input_size, args.hidden_size, num_classes, args.sparsity, args.r, args.bias, args.use_relu).to(device)
     elif args.model == 'redlenet5':
@@ -215,6 +209,33 @@ def main():
 
     if args.save_model is not None:
         torch.save(model.state_dict(), args.save_model+'.pt')
+
+
+def get_device(args):
+    use_cuda = not args.no_cuda and torch.cuda.is_available()
+    if args.device is None:
+        device = torch.device('cuda:0' if use_cuda else 'cpu')
+    else:
+        device = 'cuda:' + str(args.device)
+    
+    print('Using device {} for training and testing'.format(device))
+
+    return device
+
+def get_dataset(args):
+    print('Benchmarking with the {} dataset'.format(args.dataset))
+    dataset = getattr(data, args.dataset.upper())(args)
+    
+    return dataset
+
+def get_model(args, data):
+    print('Creating model {}'.format(args.arch))
+    model = models.__dict__[args.arch](data.INPUT_SIZE, data.NUM_CLASSES, args)     #TODO: update all architectures to accept these as arguments
+
+    # TODO: freeze weights here
+    # TODO: load in weights/state_dict here
+
+    return model
 
 
 if __name__ == '__main__':

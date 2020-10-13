@@ -3,10 +3,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class TwoLayerFC(nn.Module):
-    def __init__(self, input_size, hidden_size, num_classes, bias):
+    def __init__(self, input_size, num_classes, args):
         super(TwoLayerFC, self).__init__()
-        self.fc1 = nn.Linear(input_size, hidden_size, bias=bias)
-        self.fc2 = nn.Linear(hidden_size, num_classes, bias=bias)
+        self.fc1 = nn.Linear(input_size, args.hidden_size, bias=args.bias)
+        self.fc2 = nn.Linear(args.hidden_size, num_classes, bias=args.bias)
 
     def forward(self, x):
         x = x.view(x.size()[0], -1)
@@ -19,12 +19,12 @@ class TwoLayerFC(nn.Module):
         return output
 
 class FourLayerFC(nn.Module):
-    def __init__(self, input_size, hidden_size, num_classes, bias):
+    def __init__(self, input_size, num_classes, args):
         super(FourLayerFC, self).__init__()
-        self.fc1 = nn.Linear(input_size, hidden_size, bias=bias)
-        self.fc2 = nn.Linear(hidden_size, hidden_size, bias=bias)
-        self.fc3 = nn.Linear(hidden_size, hidden_size, bias=bias)
-        self.fc4 = nn.Linear(hidden_size, num_classes, bias=bias)
+        self.fc1 = nn.Linear(input_size, args.hidden_size, bias=args.bias)
+        self.fc2 = nn.Linear(args.hidden_size, args.hidden_size, bias=args.bias)
+        self.fc3 = nn.Linear(args.hidden_size, args.hidden_size, bias=args.bias)
+        self.fc4 = nn.Linear(args.hidden_size, num_classes, bias=args.bias)
 
     def forward(self, x):
         x = x.view(x.size()[0], -1)
@@ -41,17 +41,17 @@ class FourLayerFC(nn.Module):
         return output
 
 class LeNet5(nn.Module):
-    def __init__(self, num_classes, bias):
+    def __init__(self, input_size, num_classes, args):
         super(LeNet5, self).__init__()
-        self.conv1 = nn.Conv2d(1, 6, kernel_size=(5, 5), padding=2, bias=bias)
+        self.conv1 = nn.Conv2d(1, 6, kernel_size=(5, 5), padding=2, bias=args.bias)
         self.pool1 = nn.MaxPool2d(kernel_size=(2, 2), stride=2)
-        self.conv2 = nn.Conv2d(6, 16, kernel_size=(5, 5), bias=bias)
+        self.conv2 = nn.Conv2d(6, 16, kernel_size=(5, 5), bias=args.bias)
         self.pool2 = nn.MaxPool2d(kernel_size=(2, 2), stride=2)
-        self.fc1 = nn.Linear(400, 120, bias=bias)
-        self.fc2 = nn.Linear(120, 84, bias=bias)
-        self.fc3 = nn.Linear(84, num_classes, bias=bias)
+        self.fc1 = nn.Linear(400, 120, bias=args.bias)
+        self.fc2 = nn.Linear(120, 84, bias=args.bias)
+        self.fc3 = nn.Linear(84, num_classes, bias=args.bias)
 
-        self.conv1.weight.requires_grad = False
+        self.conv1.weight.requires_grad = False     # TODO: This is assuming a network is loaded in... get rid of this an add flexibility
         self.conv2.weight.requires_grad = False
 
     def forward(self, x):

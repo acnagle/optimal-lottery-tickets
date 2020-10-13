@@ -3,17 +3,18 @@ import torch
 from torchvision import datasets, transforms
 
 class MNIST:
-    def __init__(self, args, **kwargs):
+    def __init__(self, args):
         super(MNIST, self).__init__()
 
         self.INPUT_SIZE = 784
         self.NUM_CLASSES = 10
 
-        data_dir = os.path.join(args.data, "cifar10")
-        
+        use_cuda = not args.no_cuda and torch.cuda.is_available()
+        kwargs = {'num_workers': args.num_workers, 'pin_memory': True} if use_cuda else {}
+
         self.train_loader = torch.utils.data.DataLoader(
             datasets.MNIST(
-                root=data_dir,
+                root=args.data_dir,
                 train=True,
                 download=True,
                 transform=transforms.Compose(
@@ -30,7 +31,7 @@ class MNIST:
         
         self.test_loader = torch.utils.data.DataLoader(
             datasets.MNIST(
-                root=data_dir,
+                root=args.data_dir,
                 train=False,
                 transform=transforms.Compose(
                     [
@@ -45,14 +46,15 @@ class MNIST:
         )
 
 class CIFAR10:
-    def __init__(self, args, **kwargs):
+    def __init__(self, args):
         super(CIFAR10, self).__init__()
 
         self.INPUT_SIZE = 1024
         self.NUM_CLASSES = 10
 
-        data_dir = os.path.join(args.data, "cifar10")
-
+        use_cuda = not args.no_cuda and torch.cuda.is_available()
+        kwargs = {'num_workers': args.num_workers, 'pin_memory': True} if use_cuda else {}
+        
         normalize = transforms.Normalize(
             mean=[0.491, 0.482, 0.447],
             std=[0.247, 0.243, 0.262]
@@ -60,7 +62,7 @@ class CIFAR10:
 
         self.train_loader = torch.utils.data.DataLoader(
             datasets.CIFAR10(
-                root=data_dir,
+                root=os.path.join(args.data_dir, 'CIFAR10'),
                 train=True,
                 download=True,
                 transform=transforms.Compose(
@@ -78,8 +80,8 @@ class CIFAR10:
         )
 
         self.test_loader = torch.utils.data.DataLoader(
-            torchvision.datasets.CIFAR10(
-                root=data_root,
+            datasets.CIFAR10(
+                root=os.path.join(args.data_dir, 'CIFAR10'),
                 train=False,
                 download=True,
                 transform=transforms.Compose(

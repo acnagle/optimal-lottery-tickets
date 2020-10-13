@@ -4,13 +4,13 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from utils/red_fc import RedLayer
+from utils.red_fc import RedLayer
 
 class RedTwoLayerFC(nn.Module):
-    def __init__(self, input_size, hidden_size, num_classes, sparsity, redundancy, bias, use_relu):
+    def __init__(self, input_size, num_classes, args):      #TODO: Why isn't all the RedLayer() info showing up when I print out the model? MIGHT BE BECUASE I NEED TO INCLUDE .__INIT__(*ARGS, **KWARGS) BELOW
         super(RedTwoLayerFC, self).__init__()
-        self.red1 = RedLayer(in_features=input_size, out_features=hidden_size, sparsity=sparsity, redundancy=redundancy, bias=bias, use_relu=use_relu)
-        self.red2 = RedLayer(in_features=hidden_size, out_features=num_classes, sparsity=sparsity, redundancy=redundancy, bias=bias, use_relu=use_relu)
+        self.red1 = RedLayer(in_features=input_size, out_features=args.hidden_size, sparsity=args.sparsity, redundancy=args.r, bias=args.bias, use_relu=args.use_relu)
+        self.red2 = RedLayer(in_features=args.hidden_size, out_features=num_classes, sparsity=args.sparsity, redundancy=args.r, bias=args.bias, use_relu=args.use_relu)
 
     def forward(self, x):
         x = self.red1(x)
@@ -22,12 +22,12 @@ class RedTwoLayerFC(nn.Module):
         return output
 
 class RedFourLayerFC(nn.Module):
-    def __init__(self, input_size, hidden_size, num_classes, sparsity, redundancy, bias, use_relu):
+    def __init__(self, input_size, num_classes, args):
         super(RedFourLayerFC, self).__init__()
-        self.red1 = RedLayer(in_features=input_size, out_features=hidden_size, sparsity=sparsity, redundancy=redundancy, bias=bias, use_relu=use_relu)
-        self.red2 = RedLayer(in_features=hidden_size, out_features=hidden_size, sparsity=sparsity, redundancy=redundancy, bias=bias, use_relu=use_relu)
-        self.red3 = RedLayer(in_features=hidden_size, out_features=hidden_size, sparsity=sparsity, redundancy=redundancy, bias=bias, use_relu=use_relu)
-        self.red4 = RedLayer(in_features=hidden_size, out_features=num_classes, sparsity=sparsity, redundancy=redundancy, bias=bias, use_relu=use_relu)
+        self.red1 = RedLayer(input_size, args.hidden_size, args.sparsity, args.r, args.bias, args.use_relu)
+        self.red2 = RedLayer(args.hidden_size, args.hidden_size, args.sparsity, args.r, args.bias, args.use_relu)
+        self.red3 = RedLayer(args.hidden_size, args.hidden_size, args.sparsity, args.r, args.bias, args.use_relu)
+        self.red4 = RedLayer(args.hidden_size, num_classes, args.sparsity, args.r, args.bias, args.use_relu)
 
     def forward(self, x):
         x = self.red1(x)
@@ -42,23 +42,23 @@ class RedFourLayerFC(nn.Module):
 
         return output
 
-class RedFCLeNet5(nn.Module):
-    def __init__(self, num_classes, sparsity, redundancy, bias, use_relu, state_dict=None):
-        super(RedLeNet5, self).__init__()
-        self.conv1 = nn.Conv2d(1, 6, kernel_size=(5, 5), padding=2, bias=bias)
+class RedFCLeNet5(nn.Module):       # TODO: rename to RedLeNet5FC (copy the name convention for fully connected networks)
+    def __init__(self, input_size, num_classes, args):
+        super(RedFCLeNet5, self).__init__()
+        self.conv1 = nn.Conv2d(1, 6, kernel_size=(5, 5), padding=2, bias=args.bias)
         self.pool1 = nn.MaxPool2d(kernel_size=(2, 2), stride=2)
-        self.conv2 = nn.Conv2d(6, 16, kernel_size=(5, 5), bias=bias)
+        self.conv2 = nn.Conv2d(6, 16, kernel_size=(5, 5), bias=args.bias)
         self.pool2 = nn.MaxPool2d(kernel_size=(2, 2), stride=2)
-        self.red1 = RedLayer(400, 120, sparsity, redundancy, bias, use_relu=use_relu)
-        self.red2 = RedLayer(120, 84, sparsity, redundancy, bias, use_relu=use_relu)
-        self.red3 = RedLayer(84, num_classes, sparsity, redundancy, bias, use_relu=use_relu)
+        self.red1 = RedLayer(400, 120, args.sparsity, args.redundancy, args.bias, use_relu=args.use_relu)
+        self.red2 = RedLayer(120, 84, args.sparsity, args.redundancy, args.bias, use_relu=args.use_relu)
+        self.red3 = RedLayer(84, num_classes, args.sparsity, args.redundancy, args.bias, use_relu=args.use_relu)
 
-        if state_dict is not None:
-            # freeze weights
-            self.conv1.weight.requires_grad = False
-            self.conv2.weight.requires_grad = False
-
-            self.__load_weights(state_dict)
+#        if state_dict is not None:
+#            # freeze weights
+#            self.conv1.weight.requires_grad = False     # TODO: freeze and load weights in main
+#            self.conv2.weight.requires_grad = False
+#
+#            self.__load_weights(state_dict)
 
     def forward(self, x):
         x = self.conv1(x)
