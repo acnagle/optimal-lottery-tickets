@@ -11,29 +11,24 @@ class RedLayer(nn.Module):
         self.out_features = out_features
         self.sparsity = sparsity
         self.redundancy = redundancy
+        self.bias = bias            # TODO: try running main.py with --bias and see the errors being thrown
         self.use_relu = use_relu
 
         self.weight1 = nn.Parameter(torch.Tensor(redundancy, in_features))    # weights for the redundant layer
         self.scores1 = nn.Parameter(torch.Tensor(self.weight1.size()))
         self.weight2 = nn.Parameter(torch.Tensor(out_features, in_features * redundancy))
         self.scores2 = nn.Parameter(torch.Tensor(self.weight2.size()))
-       
+
         std1 = math.sqrt(2. / 1)
         std2 = math.sqrt(2. / in_features)
 
-        # initialize the weights and scores
+        # initialize the scores
         nn.init.uniform_(self.scores1, a=-std1, b=std1)    # kaiming uniform
         nn.init.uniform_(self.scores2, a=-std2, b=std2)
-    
+
         nn.init.normal_(self.weight1, std=std1)   # kaiming normal
         nn.init.normal_(self.weight2, std=std2)
-        
-        if bias:
-            self.bias = nn.Parameter(torch.Tensor(out_features))
-            nn.init.uniform_(self.bias, a=-std2, b=std2)
-        else:
-            self.register_parameter('bias', None)
-
+    
         # turn the gradient on the weights off
         self.weight1.requires_grad = False
         self.weight2.requires_grad = False
