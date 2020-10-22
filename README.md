@@ -6,7 +6,7 @@ This repository is the official implementation of [Optimal Lottery Tickets via S
 
 ## Setup
 Python 3.6.9, CUDA Version 10.2  
-Create a new python environment and install all package dependencies provided in requirements.txt. Once your environment is created, you can install the requirements with 
+Create a new python environment and install all package dependencies provided in requirements.txt. Once your environment is created, you can install the package dependencies by following the instructions below.
 
 ### Installing gurobipy
 
@@ -93,10 +93,10 @@ In the subuset-sum directory, a run.sh script contains the necessary commands to
 Although most arguments used when running main.py are self-explanatory, some arguments and naming conventions deserve a more thorough explanation:
 
 1. Throughout the code, the word "redundant" (sometimes shortened to the prefix "red") occurs frequently. This is a naming convention that refers to our structure. Essentially, our structure introduces some "redundancy" into a given architecture by replacing a single weight value with r different weight values, which are then pruned. The number of redundant units in a network with our structure is specified by the argument --redundancy. For example, running
-```red
-python main.py --model "RedTwoLayerFC" --redundancy 5
-```
-instructs main.py to run an experiment for a two-layer fully connected network with our structure and 5 units of redundancy.
+ ```red
+ python main.py --model "RedTwoLayerFC" --redundancy 5
+ ```
+ instructs main.py to run an experiment for a two-layer fully connected network with our structure and 5 units of redundancy.
 
 2. For networks that use our structure and for baseline networks, the argument --hidden-size  works as one might expect: it specifies the number of hidden nodes in the fully connected layers of a network. There are two exceptions to this rule: (1) LeNet5 architectures have a predetermined number of hidden nodes based on the literature, so --hidden-size is ignored. (2) When pruning a wide network, such as "WideTwoLayerFC" (wide two-layer fully connected network), the number of hidden nodes in the architecture is calculated based off the value specified by --hidden-size and --redundancy. The the number hidden nodes are calculated this way so that the number of parameters in a wide network approximately match the number of parameters in a network that uses our structure. For example, if a "RedTwoLayerFC" (our network) is defined for --hidden-size 500 and --redundancy 5, then defining a "WideTwoLayerFC" with --hidden-size 500 and --redundancy 5 will prune a wide network with the approximately the same number of parameters as the "RedTwoLayerFC" network.
 
