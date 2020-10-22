@@ -97,7 +97,7 @@ Although most arguments used when running main.py are self-explanatory, some arg
  python main.py --model "RedTwoLayerFC" --redundancy 5
  ```  
  instructs main.py to run an experiment for a two-layer fully connected network with our structure and 5 units of redundancy.
-
+ 
 2. For networks that use our structure and for baseline networks, the argument --hidden-size  works as one might expect: it specifies the number of hidden nodes in the fully connected layers of a network. There are two exceptions to this rule: (1) LeNet5 architectures have a predetermined number of hidden nodes based on the literature, so --hidden-size is ignored. (2) When pruning a wide network, such as "WideTwoLayerFC" (wide two-layer fully connected network), the number of hidden nodes in the architecture is calculated based off the value specified by --hidden-size and --redundancy. The the number hidden nodes are calculated this way so that the number of parameters in a wide network approximately match the number of parameters in a network that uses our structure. For example, if a "RedTwoLayerFC" (our network) is defined for --hidden-size 500 and --redundancy 5, then defining a "WideTwoLayerFC" with --hidden-size 500 and --redundancy 5 will prune a wide network with the approximately the same number of parameters as the "RedTwoLayerFC" network.
 
 3. To avoid confusion, the sparsity argument has the following interpretation: a sparsity of 0 means "no sparsity" (i.e. "keep all the weights") and a sparsity of 1 means "complete sparsity" (i.e. "prune all the weights"). By this convention, a sparsity of 0.75 means "keep 25% of the weights."
