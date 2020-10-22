@@ -1,23 +1,18 @@
-from models.redundant import RedTwoLayerFC, RedFourLayerFC, RedFCLeNet5, RedFCVGG #, RedFCResNet18
-from models.wide import WideTwoLayerFC, WideFourLayerFC, WideFCLeNet5 #, WideFCVGG, WideFCResNet18
-from models.baseline import TwoLayerFC, FourLayerFC, LeNet5, VGG #, ResNet18
+from models.redundant import RedTwoLayerFC, RedFourLayerFC, RedLeNet5
+from models.wide import WideTwoLayerFC, WideFourLayerFC, WideLeNet5
+from models.baseline import TwoLayerFC, FourLayerFC, LeNet5
 
 __all__ = [
     'RedTwoLayerFC',
     'RedFourLayerFC',
-    'RedFCLeNet5',
-    'RedFCVGG',
-#    'RedFCResNet18',
+    'RedLeNet5',
     'WideTwoLayerFC',
     'WideFourLayerFC',
-    'WideFCLeNet5',
-#    'WideFCVGG',
-#    'WideFCResNet18',
+    'WideLeNet5',
     'TwoLayerFC',
     'FourLayerFC',
     'LeNet5',
     'VGG'
-#    'ResNet18'
 ]
 
 

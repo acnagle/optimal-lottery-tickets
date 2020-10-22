@@ -4,9 +4,11 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from utils.subnet import GetSubnet
+
 class RedLayer(nn.Module):
     def __init__(self, in_features, out_features, sparsity, redundancy, bias, use_relu):
-        super(RedLayer, self).__init__()
+        super(RedLayer, self).__init__()        # TODO: Make it so that the above arguments will show up when the model is printed
         self.in_features = in_features
         self.out_features = out_features
         self.sparsity = sparsity
@@ -42,7 +44,7 @@ class RedLayer(nn.Module):
         x = x.view(x.size()[0], 1, -1) 
         x = x.repeat(1, self.redundancy, 1)    # x.size() = torch.Size([B, redundancy, in_features])
 
-        subnet1 = utils.GetSubnet.apply(self.scores1.abs(), self.sparsity)     # get pruning mask
+        subnet1 = GetSubnet.apply(self.scores1.abs(), self.sparsity)     # get pruning mask
         w1 = self.weight1 * subnet1     # apply pruning mask
     
         x = x * w1    # element-wise multiply input with weights
@@ -52,10 +54,14 @@ class RedLayer(nn.Module):
 
         x = x.permute(0, 2, 1).reshape(x.size()[0], -1)     # x.size() = torch.Size([B, redundancy * in_features])
     
-        subnet2 = utils.GetSubnet.apply(self.scores2.abs(), self.sparsity)
+        subnet2 = GetSubnet.apply(self.scores2.abs(), self.sparsity)
         w2 = self.weight2 * subnet2
     
         output = F.linear(x, w2, bias=self.bias)
 
         return output
+
+    def __repr__(self):
+        return f'RedLayer(in_features={self.in_features}, out_features={self.out_features}, redundancy={self.redundancy}, use_relu={self.use_relu}, bias={self.bias})'
+
 

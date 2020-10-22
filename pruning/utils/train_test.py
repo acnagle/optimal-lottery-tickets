@@ -16,7 +16,7 @@ def train(model, device, train_loader, optimizer, criterion, epoch, log_interval
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                 100. * batch_idx / len(train_loader), loss.item()))
 
-def test(model, device, criterion, test_loader, batch_size):
+def test(model, device, test_loader, criterion, batch_size):
     model.eval()
     test_loss = 0
     correct = 0

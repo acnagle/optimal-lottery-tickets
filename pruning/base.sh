@@ -1,15 +1,14 @@
 #!/bin/bash
 
-device=1
+gpu=0
 hidden_size=500
 
-mkdir -p "lenet5"
+mkdir -p "./results/LeNet5"
 
-for model in fc2 fc4; do
-    mkdir -p $model
-#    for epochs in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20; do
+for arch in fc2 fc4; do
+    mkdir -p "./results/${arch}"
     for epochs in 30 50 100 125 150; do
-        python3 ../main.py --device $device --lr 0.1 --epochs $epochs --model $model --hidden-size $hidden_size --save-results > "./${model}/e${epochs}_h${hidden_size}.out"
-        python3 ../main.py --device $device --lr 0.01 --epochs $epochs --model "lenet5" --save-results > "./lenet5/e${epochs}.out"
+        python3 main.py --gpu $gpu --lr 0.1 --epochs $epochs --arch $arch --hidden-size $hidden_size --save-results > "./results/${arch}/e${epochs}_h${hidden_size}.out"
+        python3 main.py --gpu $gpu --lr 0.01 --epochs $epochs --arch "LeNet5" --save-results > "./results/LeNet5/e${epochs}.out"
     done
 done

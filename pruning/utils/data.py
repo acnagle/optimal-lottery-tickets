@@ -10,7 +10,7 @@ class MNIST:
         self.NUM_CLASSES = 10
 
         use_cuda = not args.no_cuda and torch.cuda.is_available()
-        kwargs = {'num_workers': args.num_workers, 'pin_memory': True} if use_cuda else {}
+        kwargs = {'num_workers': args.workers, 'pin_memory': True} if use_cuda else {}
 
         self.train_loader = torch.utils.data.DataLoader(
             datasets.MNIST(
@@ -53,7 +53,7 @@ class CIFAR10:
         self.NUM_CLASSES = 10
 
         use_cuda = not args.no_cuda and torch.cuda.is_available()
-        kwargs = {'num_workers': args.num_workers, 'pin_memory': True} if use_cuda else {}
+        kwargs = {'num_workers': args.workers, 'pin_memory': True} if use_cuda else {}
         
         normalize = transforms.Normalize(
             mean=[0.491, 0.482, 0.447],
