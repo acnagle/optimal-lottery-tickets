@@ -78,20 +78,29 @@ def main():
         device = torch.device('cuda' if use_cuda else 'cpu')
 
     # get MNIST dataset
-    train_dataset = torchvision.datasets.MNIST(root=args.data, 
-                                               train=True, 
-                                               transform=transforms.ToTensor(),  
-                                               download=True)
-    test_dataset = torchvision.datasets.MNIST(root=args.data, 
-                                              train=False, 
-                                              transform=transforms.ToTensor())
+    train_dataset = torchvision.datasets.MNIST(
+        root=args.data, 
+        train=True, 
+        transform=transforms.ToTensor(),  
+        download=True
+    )
+    test_dataset = torchvision.datasets.MNIST(
+        root=args.data, 
+        train=False, 
+        transform=transforms.ToTensor()
+    )
+
     # create data loaders
-    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                               batch_size=args.batch_size, 
-                                               shuffle=True)
-    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                              batch_size=args.batch_size, 
-                                              shuffle=False)
+    train_loader = torch.utils.data.DataLoader(
+        dataset=train_dataset, 
+        batch_size=args.batch_size, 
+        shuffle=True
+    )
+    test_loader = torch.utils.data.DataLoader(
+        dataset=test_dataset, 
+        batch_size=args.batch_size, 
+        shuffle=False
+    )
 
     # define model
     if args.model == 'fc2':
