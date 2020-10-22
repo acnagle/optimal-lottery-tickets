@@ -4,7 +4,7 @@ Ankit Pensia, Shashank Rajput, Alliot Nagle, Harit Vishwakarma, Dimitris Papaili
 This repository is the official implementation of [Optimal Lottery Tickets via SubsetSum: Logarithmic Over-Parameterization is Sufficient
 ](https://arxiv.org/abs/2006.07990). 
 
-<p align="center"><img width="500" src="img/Weight_ReLU.png"></p>
+<p align="center"><img width="450" src="img/Weight_ReLU.png"></p>
 
 ## Setup
 Python 3.6.9, CUDA Version 10.2  
@@ -104,7 +104,7 @@ Although most arguments used when running main.py are self-explanatory, some arg
 
 3. To avoid confusion, the sparsity argument has the following interpretation: a sparsity of 0 means "no sparsity" (i.e. "keep all the weights") and a sparsity of 1 means "complete sparsity" (i.e. "prune all the weights"). By this convention, a sparsity of 0.75 means "keep 25% of the weights."
 
-In the random-networks directory, there are three bash scripts for our experiments: (1) base.sh contains all the commands for our baseline network results, (2) fc.sh contains all the commands for two- and four-layer fully connected networks that use our redundant structure and the widened networks, and (3) lenet5.sh contains all the commands for our implementing our pruned redundant structure and the wide fully connected layers on LeNet5.
+In the pruning directory, there are three bash scripts for our experiments: (1) base.sh contains all the commands for our baseline network results, (2) fc.sh contains all the commands for two- and four-layer fully connected networks that use our redundant structure and the widened networks, and (3) lenet5.sh contains all the commands for our implementing our pruned redundant structure and the wide fully connected layers on LeNet5.
 
 ## Results
 ### Experiment 1
