@@ -4,7 +4,7 @@ Ankit Pensia, Shashank Rajput, Alliot Nagle, Harit Vishwakarma, Dimitris Papaili
 This repository is the official implementation of [Optimal Lottery Tickets via SubsetSum: Logarithmic Over-Parameterization is Sufficient
 ](https://arxiv.org/abs/2006.07990). 
 
-<p align="center"><img width="500" src="img/weight_ReLU.png"></p>
+<p align="center"><img width="500" src="img/Weight_ReLU.png"></p>
 
 ## Setup
 Python 3.6.9, CUDA Version 10.2  
