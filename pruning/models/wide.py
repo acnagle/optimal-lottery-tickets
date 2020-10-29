@@ -66,14 +66,13 @@ class WideLeNet5(nn.Module):
         self.conv2 = nn.Conv2d(6, 16, kernel_size=(5, 5), bias=args.bias)
         self.pool2 = nn.MaxPool2d(kernel_size=(2, 2), stride=2)
 
-        # TODO: update this code for calculation the correct hidden_size
         # calculate hidden_size so that the number of parameters in this wide LeNet5 has approximately the same number of parameters in the fc layers as our models
         in1 = 400    # input size of first fc layer of original LeNet5
         in2 = 120    # input size of second fc layer of original LeNet5
         in3 = 84     # input size of third fc layer of original LeNet5
 
         b = in1 + num_classes
-        c = in1 * args.redundancy + in1 * args.redundancy * in2 + in2 * args.redundancy + in2 *args.redundancy * in3 + in3 * args.redundancy + in3 * args.redundancy * num_classes
+        c = in1 * args.redundancy + in1 * args.redundancy * in2 + in2 * args.redundancy + in2 * args.redundancy * in3 + in3 * args.redundancy + in3 * args.redundancy * num_classes
 
         hidden_size = int(round((1 / 2) * (math.sqrt(b ** 2 + 4 * c) - b)))
 
