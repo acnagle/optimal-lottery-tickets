@@ -24,7 +24,7 @@ class RedLayer(nn.Module):
         std2 = math.sqrt(2. / in_features)
 
         # initialize the weights and scores
-        nn.init.uniform_(self.scores1, a=-std1, b=std1)    # kaiming uniform
+        nn.init.uniform_(self.scores1, a=-std1, b=std1)
         nn.init.uniform_(self.scores2, a=-std2, b=std2)
     
         nn.init.normal_(self.weight1, std=std1)   # kaiming normal
