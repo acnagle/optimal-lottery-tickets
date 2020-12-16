@@ -8,7 +8,7 @@ from utils.subnet import GetSubnet
 
 class RedLayer(nn.Module):
     def __init__(self, in_features, out_features, sparsity, redundancy, bias, use_relu):
-        super(RedLayer, self).__init__()        # TODO: Make it so that the above arguments will show up when the model is printed
+        super(RedLayer, self).__init__()
         self.in_features = in_features
         self.out_features = out_features
         self.sparsity = sparsity
