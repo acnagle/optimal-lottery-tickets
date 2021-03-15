@@ -106,7 +106,7 @@ Although most arguments used when running main.py are self-explanatory, some arg
 
 In the pruning directory, there are three bash scripts for our experiments: (1) base.sh contains all the commands for our baseline network results, (2) fc.sh contains all the commands for two- and four-layer fully connected networks that use our redundant structure and the widened networks, and (3) lenet5.sh contains all the commands for our implementing our pruned redundant structure and the wide fully connected layers on LeNet5.
 
-## Results
+## Results (MNIST)
 ### Experiment 1
 | Model  | Inital Params | Remaining Params | Relative Size to Target After Pruning  | MNIST Accuracy |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
@@ -115,7 +115,12 @@ In the pruning directory, there are three bash scripts for our experiments: (1) 
 
 ### Experiment 2
 
+#### Two-Layer Fully Connected
 <p align="center"><img width="500" src="pruning/figures/fc2.png"></p>
+
+#### Four-Layer Fully Connected
 <p align="center"><img width="500" src="pruning/figures/fc4.png"></p>
+
+#### LeNet5
 <p align="center"><img width="500" src="pruning/figures/lenet5.png"></p>
 
