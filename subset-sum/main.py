@@ -204,7 +204,7 @@ def main():
     approx_model.load_state_dict(approx_model_dict)
 
     # inference approximated target network on test set
-    approx_test_acc = utils.test(model, device, criterion, test_loader, args.batch_size)
+    approx_test_acc = utils.test(approx_model, device, criterion, test_loader, args.batch_size)
 
     print('Accuracy of target network on the 10000 test images: {} %'.format(target_test_acc))
     print('Accuracy of approximated network on the 10000 test images: {} %'.format(approx_test_acc))
