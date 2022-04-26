@@ -115,13 +115,13 @@ In the pruning directory, there are three bash scripts for our experiments: (1) 
 
 ### Experiment 2
 
-#### Two-Layer Fully Connected
+<h4 style="text-align: center">Two-Layer Fully Connected</h4>
 <p align="center"><img width="500" src="pruning/figures/fc2.png"></p>
 
-#### Four-Layer Fully Connected
+<h4 style="text-align: center">Four-Layer Fully Connected</h4>
 <p align="center"><img width="500" src="pruning/figures/fc4.png"></p>
 
-#### LeNet5
+<h4 style="text-align: center">LeNet5</h4>
 <p align="center"><img width="500" src="pruning/figures/lenet5.png"></p>
 
 ## Updates
