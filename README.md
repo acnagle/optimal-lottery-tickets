@@ -124,3 +124,12 @@ In the pruning directory, there are three bash scripts for our experiments: (1) 
 #### LeNet5
 <p align="center"><img width="500" src="pruning/figures/lenet5.png"></p>
 
+## Updates
+We thank Eddie Xiong for identifying a small bug in our code.
+```python
+approx_test_acc = utils.test(model, device, criterion, test_loader, args.batch_size)
+```
+on line 207 of subset-sum/main.py has been updated to 
+```python
+approx_test_acc = utils.test(approx_model, device, criterion, test_loader, args.batch_size)
+```
